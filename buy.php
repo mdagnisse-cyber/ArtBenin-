@@ -1,29 +1,4 @@
 <?php
-// ---------------------------
-// Connexion à la base de données
-// ---------------------------
-
-// Détection de l'environnement : local ou en ligne
-if ($_SERVER['HTTP_HOST'] === 'localhost') {
-    define('DB_SERVER', 'localhost');
-    define('DB_USERNAME', 'root');                   
-    define('DB_PASSWORD', '');                       
-    define('DB_NAME', 'if0_39714282_benin_art');    
-} else {
-    define('DB_SERVER', 'sql202.infinityfree.com');
-    define('DB_USERNAME', 'if0_39714282');          
-    define('DB_PASSWORD', 'MonDomaine1234');        
-    define('DB_NAME', 'if0_39714282_benin_art');    
-}
-
-// Connexion MySQLi
-$conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-// Vérification de la connexion
-if (!$conn) {
-    die("Erreur de connexion : " . mysqli_connect_error());
-}
-mysqli_set_charset($conn, "utf8mb4");
 
 // Requête pour récupérer les artworks
 $res = mysqli_query($conn, "SELECT * FROM artworks ORDER BY created_at DESC");
